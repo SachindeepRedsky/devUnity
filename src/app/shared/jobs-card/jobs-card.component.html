@@ -1,0 +1,61 @@
+<!-- Job Listings -->
+<div [ngClass]="{ test: item.favorites }" class="test mt-4" *ngFor="let item of cardDetails">
+    <!-- Job Card -->
+    <div class="border border-gray-200 bg-white rounded-lg p-4" style="position: relative">
+        <div class="flex justify-between items-start">
+            <div class="flex items-center space-x-2">
+                <div
+                    class="w-5 h-5 rounded-full bg-green-200 flex items-center justify-center text-green-600 font-bold text-[10px]">
+                    AA
+                </div>
+                <div class="flex justify-between">
+                    <h3 class="text-sm font-semibold text-blue-500">{{ item.name }}</h3>
+                    <div class="flex space-x-2">
+                        <span
+                            class="bg-white outline outline-1 w-100 text-center text-blue-600 px-4 py-1 rounded-full text-xs ml-3">{{
+                            language }}</span>
+                        <li class="text-gray-300 w-1"></li>
+                        <span
+                            class="bg-white outline outline-1 w-100 text-center text-blue-600 px-2 py-1 rounded-full text-xs ml-3">{{
+                            job_type }}</span>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="item.favorites" class="text-blue-950 bg-white" style="
+          background-color: white;
+          padding: 5px;
+          position: absolute;
+          top: -6px;
+          right: -6px;
+        ">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-star-fill h-4 w-4"
+                    viewBox="0 0 16 16">
+                    <path
+                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.32-.158-.888.283-.95l4.898-.696 2.192-4.425c.197-.398.73-.398.927 0l2.19 4.425 4.898.696c.441.063.612.63.283.95l-3.524 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                </svg>
+            </div>
+            <span *ngIf="!item.favorites" class="text-xs text-gray-400 font-light">Viewed</span>
+        </div>
+        <h4 class="text-md font-semibold mt-2">{{ item.jobTitle }}</h4>
+        <p class="mt-2 text-gray-900 font-[500] text-sm">
+            {{ item.jobDescription }}
+        </p>
+        <div class="flex justify-between items-center mt-1">
+            <div class="flex space-x-2">
+                <div class="text-red-500 flex items-center">
+                    <span class="material-symbols-outlined text-[22px]">
+                        {{ flag_icon }}
+                    </span>
+                    <span class="ml-1 text-[12px]">{{ report_text }}</span>
+                </div>
+                <li class="text-gray-300 w-1"></li>
+                <div class="text-blue-500 flex items-center">
+                    <span class="material-symbols-outlined text-[22px]">
+                        {{ star_icon }}
+                    </span>
+                    <span class="ml-1 text-[12px]">{{ bookmark_text }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

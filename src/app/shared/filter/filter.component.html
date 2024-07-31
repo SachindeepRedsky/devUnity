@@ -1,0 +1,35 @@
+<div class="container mx-auto px-4">
+    <div class="w-full h-full max-w-xs mx-auto bg-white border-2 rounded-lg p-4">
+        <h2 class="text-xl font-semibold mb-4">{{ filter_heading }}</h2>
+
+        <div *ngFor="let item of filterItems; let i = index" class="accordion-item rounded-md mb-2">
+            <div class="font-semibold flex items-center justify-between accordion-button w-full py-2 mt-3 text-left text-gray-800 rounded-t-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                (click)="toggleContent(i)">
+                {{ item.title }}
+                <span class="cursor-pointer material-symbols-outlined">
+                    {{ drop_down_arrow }}
+                </span>
+            </div>
+            <div class="accordion-content" [ngClass]="{ open: i === activeIndex }">
+                <div class="pt-2 pb-2">
+                    <div class="mt-2">
+                        <div *ngFor="let option of item.optionList; let j = index" class="flex items-center mt-4">
+                            <input [id]="'option' + i + '_' + j" type="checkbox"
+                                class="form-checkbox h-6 w-6 text-blue-600" />
+                            <label [for]="'option' + i + '_' + j" class="ml-2 text-gray-400 text-xs">{{ option
+                                }}</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="flex justify-between mt-4">
+            <button class="text-blue-500 text-sm border rounded-lg px-4 py-2 w-28">
+                {{ clear_btn_text }}
+            </button>
+            <button class="bg-blue-500 text-white px-4 py-2 rounded-lg text-sm w-28">
+                {{ apply_btn_text }}
+            </button>
+        </div>
+    </div>
+</div>
