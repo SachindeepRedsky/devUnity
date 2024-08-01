@@ -1,5 +1,6 @@
 export const APP_NAME1 = 'dev';
-export const APP_NAME2 = 'Unity';
+export const APP_NAME2 = 'U';
+export const APP_NAME3 = 'nity';
 export const USER_NAME = 'Jose crue';
 export const NAV_ITEMS = ['Inbox', 'Jobs', 'Interview tips'];
 export const SEARCH_PLACEHOLDER = 'search';

@@ -3,4 +3,9 @@
 @import "tailwindcss/utilities";
 input:focus {
   border: none !important;
+  outline: none !important;
+}
+
+.on-click-animated:active {
+  transform: scale(0.95);
 }

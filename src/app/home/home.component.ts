@@ -16,4 +16,8 @@ export class HomeComponent {
   public list_title: string = LIST_TITLE;
   public filtersButton: any = FILTER_BUTTONS_DESC
   public search_Icon: string = SEARCH_ICON
+
+  public removeFilter(index: number): void {
+    this.filtersButton.splice(index, 1);
+  }
 } 

@@ -1,9 +1,11 @@
 <div class="container">
     <nav class="p-4 flex justify-between items-center flex-wrap">
-        <div class="flex items-center flex-shrink-0">
-            <span class="text-xl font-bold text-black">{{ appName1 }}<span class="text-blue-600">{{ appName2
-                    }}</span></span>
-        </div>
+        <a href="#">
+            <div class="flex items-center flex-shrink-0 cursor-pointer">
+                <span class="text-xl font-bold text-black">{{ appName1 }}<span class="text-blue-600">{{ appName2
+                        }}</span>{{appName3}}</span>
+            </div>
+        </a>
         <div class="block lg:hidden">
             <button (click)="toggleMenu()"
                 class="flex items-center px-3 py-2 border rounded text-gray-700 border-gray-400 hover:text-black hover:border-black">
@@ -16,19 +18,22 @@
         <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
             <div class="text-sm lg:flex-grow ml-8">
                 <a href="#" *ngFor="let item of navItems"
-                    class="font-[500] block mt-4 lg:inline-block lg:mt-0 text-gray-700 hover:text-black mr-7">
+                    class="p-3 hover:bg-blue-100 hover:border-1 rounded-md font-[500] block mt-4 lg:inline-block lg:mt-0 text-gray-700 hover:text-black mr-7">
                     {{ item }}
                 </a>
             </div>
-            <div class="flex items-center space-x-2 mt-4 lg:mt-0">
-                <span class="text-gray-700 text-sm font-bold">{{ userName }}</span>
-                <div style="position: relative"
-                    class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold text-sm">
-                    <div style="position: absolute; top: 0px; right: -3px"
-                        class="bg-green-700 w-[9px] h-[9px] rounded-full"></div>
-                    {{ userId }}
+            <a href="#" class="on-click-animated">
+                <div
+                    class="flex items-center space-x-2 mt-4 p-2 lg:mt-0 cursor-pointer hover:bg-blue-100 hover:bottom-1 rounded-md">
+                    <span class="text-gray-700 text-sm font-bold">{{ userName }}</span>
+                    <div style="position: relative"
+                        class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold text-sm">
+                        <div style="position: absolute; top: 0px; right: -3px"
+                            class="bg-green-700 w-[9px] h-[9px] rounded-full"></div>
+                        {{ userId }}
+                    </div>
                 </div>
-            </div>
+            </a>
         </div>
     </nav>
 </div>

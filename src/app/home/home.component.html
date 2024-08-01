@@ -4,9 +4,9 @@
 <div class="section-container container mx-auto grid grid-cols-11 gap-16 mt-8" style="width: 70%">
     <div class="job-list-section-container col-span-7">
         <div class="flex justify-start">
-            <div>
+            <div class="w-full">
                 <!-- Search Bar -->
-                <div class=" flex justify-start w-full px-1 py-2 border rounded-md shadow-sm">
+                <div class="flex justify-start w-full px-1 py-2 border rounded-md shadow-sm">
                     <span class="material-symbols-outlined text-md">
                         {{search_Icon}}
                     </span> <input type="text" [placeholder]="search_placeholder"
@@ -15,11 +15,11 @@
 
                 <!-- Filters -->
                 <div class="flex flex-wrap gap-3 mt-4 justify-start ml-0">
-                    <div *ngFor="let item of filtersButton"
-                        class="bg-[#4a86e8] text-white font-extralight px-4 py-[4px] rounded-full flex items-center space-x-2">
+                    <div *ngFor="let item of filtersButton;let i = index"
+                        class="bg-[#4a86e8] text-white font-extralight px-4 py-[4px] rounded-full flex items-center space-x-2 cursor-pointer hover:bg-[#759edf] hover:transition-all delay-100 border-[#4a86e8]">
                         <span class="material-symbols-outlined text-[22px]">{{item.image}}</span>
                         <span class="text-[12px]">{{item.name}}</span>
-                        <span class="ml-2 text-sm">&times;</span>
+                        <span (click)="removeFilter(i)" class="ml-2 text-sm cursor-pointer">&times;</span>
                     </div>
                 </div>
             </div>
