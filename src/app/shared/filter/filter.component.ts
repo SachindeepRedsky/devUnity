@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { APPLY_BUTTON_TEXT, CLEAR_BUTTON_TEXT, DROP_DOWN_ARROW, FILTER_ITEMS, FILTER_TITLE } from '../../constants/constants';
@@ -17,6 +17,8 @@ export class FilterComponent implements OnInit {
   public drop_down_arrow: string = DROP_DOWN_ARROW;
   public activeIndex: number | null = 1;
   public checkedItems: boolean[][] = [];
+  public selectedFilters: any[] = [];
+  @Output() filtersApplied = new EventEmitter<any[]>();
 
   ngOnInit(): void {
     this.checkedItems = this.filterItems.map(item => item.optionList.map(() => false));
@@ -29,4 +31,33 @@ export class FilterComponent implements OnInit {
   public clearAll(): void {
     this.checkedItems = this.checkedItems.map(options => options.map(() => false));
   }
+
+  public applyFilter(): void {
+    this.selectedFilters = [];
+
+    this.checkedItems.forEach((itemChecked, i) => {
+      let filterIndex = this.selectedFilters.findIndex(filter => filter.name === this.filterItems[i].title);
+      if (filterIndex === -1) {
+        // If the filter is not already in the selectedFilters array, add it
+        this.selectedFilters.push({
+          name: this.filterItems[i].title,
+          categories: [],
+          image: 'badge',
+        });
+        filterIndex = this.selectedFilters.length - 1;
+      }
+
+      itemChecked.forEach((isChecked, j) => {
+        if (isChecked) {
+          this.selectedFilters[filterIndex].categories.push(this.filterItems[i].optionList[j]);
+        }
+      });
+    });
+
+    this.filtersApplied.emit(this.selectedFilters); // Emit the selected filters to the parent component
+
+    this.selectedFilters = []; // Clear the selectedFilters array after emitting
+  }
+
+
 }

@@ -1,3 +1,6 @@
+<div [ngClass]="{'popup': true, 'show': isVisible}">
+    <p>{{filter_applied_message}}</p>
+</div>
 <div class="navbar bg-gray-100">
     <app-header></app-header>
 </div>
@@ -28,6 +31,6 @@
         <app-jobs-card></app-jobs-card>
     </div>
     <div class="filter-section-container col-span-4">
-        <app-filter></app-filter>
+        <app-filter (filtersApplied)="onFiltersApplied($event)"></app-filter>
     </div>
 </div>

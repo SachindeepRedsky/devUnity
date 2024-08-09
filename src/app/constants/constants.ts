@@ -8,24 +8,29 @@ export const LIST_TITLE = 'Job Listings';
 export const FILTER_BUTTONS_DESC = [
   {
     name: 'Employment type',
+    category: "",
     image: 'badge',
   },
   {
     name: 'Language',
+    category: "",
     image: 'translate',
   },
   {
     name: 'Job type',
+    category: "",
     image: 'work',
   },
   {
     name: 'Location',
+    category: "",
     image: 'location_on',
   },
 ];
 export const FILTER_TITLE = 'Filters';
 export const CLEAR_BUTTON_TEXT = 'Clear all';
 export const APPLY_BUTTON_TEXT = 'Apply filters';
+export const FILLTER_APPLIED_MESSAGE = 'Filter Applied Successfully!'
 export const FILTER_ITEMS = [
   {
     title: 'Location',
