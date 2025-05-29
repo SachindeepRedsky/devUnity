@@ -10,6 +10,7 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    environment: dev 
 
     steps:
       - name: Checkout repository
@@ -23,9 +24,8 @@ jobs:
       - name: Determine environment and set project ID
         id: set-project
         run: |
-          if [[ "${{ github.ref }}" == "refs/heads/main" ]]; then
-            echo "PROJECT_ID=${{ secrets.PROD_SUPABASE_PROJECT_ID }}" >> "$GITHUB_OUTPUT"
-            echo "$GITHUB_OUTPUT"
+          if [[ "${{ secrets.HELLO }}" == "hello" ]]; then
+            echo "hello"
           else
             echo "Unsupported branch: ${{ github.ref }}"
             exit 1
