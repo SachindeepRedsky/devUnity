@@ -1,0 +1,32 @@
+# .github/workflows/deploy-supabase-functions.yml
+
+name: Deploy Supabase Functions
+
+on:
+  push:
+    branches:
+      - main
+      - dev
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.18.2
+
+      - name: Determine environment and set project ID
+        id: set-project
+        run: |
+          if [[ "${{ github.ref }}" == "refs/heads/main" ]]; then
+            echo "PROJECT_ID=${{ secrets.PROD_SUPABASE_PROJECT_ID }}" >> "$GITHUB_OUTPUT"
+            echo "$GITHUB_OUTPUT"
+          else
+            echo "Unsupported branch: ${{ github.ref }}"
+            exit 1
+          fi
